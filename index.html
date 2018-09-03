@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+   
+    <link rel="stylesheet" href="bootstrap-4.1.3/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker.css">
+
+    
+    <title>form</title>
+</head>
+<body>
+
+
+
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Registrar
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title form__top" id="exampleModalLabel">Formulario de registro</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <div class="form-group">
+                            <div class="alert alert-danger text-center" style="display:none;" id="error">
+                                <strong>Adventencia: </strong>Debe completar todos los campos
+                            </div>
+                            <div class="alert alert-success text-center" style="display:none;" id="exito">
+                                <strong>Felicidades: </strong>Su registro ha sido guardado
+                            </div>  
+                    </div>
+                    <form class="needs-validation" novalidate>
+                            <div class="row">
+                                   
+                                    <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                            <input id="nombre" name="nombre" type="text" class="form-control b-negro" placeholder="&#128100;  Nombre" onkeyup="validacion('nombre');" required>
+                                        <span class="invalid-feedback form-text"></span> 
+                                     </div> 
+ 
+                                    <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <input id="apellido" name="apellido" type="text" class="form-control b-negro" placeholder="&#128100;  Apellido" onkeyup="validacion('apellido');"required>
+                                        <span class="invalid-feedback form-text"></span> 
+                                     </div> 
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <input id="rut" name="rut" type="text" class="form-control b-negro" placeholder="&#35; Rut" onkeyup="validacion('rut');" required>
+                                        
+                                        <span class="invalid-feedback form-text"></span> 
+                                    </div>
+                                    
+                                
+                                    <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <input id="fecha" name="fecha" type="text" class="f-sel form-control b-negro" placeholder="&#128197;  Fecha Nacimiento" onkeyup="validacion('fecha');" required>
+                                        <span class="invalid-feedback form-text"></span> 
+                                    </div>
+                                </div>
+                    
+                                <div class="row">
+                                    <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <input id="correo" name="correo" type="text" class="form-control b-negro" placeholder="&#9993;  E-mail" onkeyup="validacion('correo');" required>
+                                    <span class="invalid-feedback form-text"></span> 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                        <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                            <select name="region" id="region" class="form-control b-negro" placeholder="&#127758;" onchange="validacion('region'); cargarComuna();" required >
+                                            <option id="" value="" >Región</option>
+                        
+                                            <option id="stgo"  value="stgo">Metropolitana de Santiago</option>
+                                            <option id="arica" value="arica">Arica y Parinacota</option>
+                                            <option id="tarapaca" value="tarapaca">Tarapacá</option>
+                                            <option id="antofagasta" value="antofagasta">Antofagasta</option>
+                                            <option id="atacama" value="atacama">Atacama</option>
+                                            <option id="coquimbo" value="coquimbo">Coquimbo</option>
+                                            <option id="valparaiso" value="valparaiso">Valparaiso</option>
+                                            <option id="ohiggins" value="ohiggins">
+                                            Región del Libertador Gral. Bernardo O'Higgins</option>
+                                            <option id="maule" value="maule">Región del Maule</option>
+                                            <option id="biobio" value="biobio">Región del Bío Bío</option>
+                                            <option id="araucania" value="araucania">Región de la Araucanía</option>
+                                            <option id="rio" value="rio">Región de los Ríos</option>
+                                            <option id="lagos" value="lagos">Región de los Lagos</option>
+                                            <option id="aisen" value="aisen">Región de Aisén</option>
+                                            <option id="magallanes" value="magallanes">Magallanes y Antártica</option>
+                                            
+                                        </select>
+                                        <span class="invalid-feedback form-text"></span>
+                                    </div>
+                                
+                                    <div class="form-group col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <select name="comuna" id="comuna" class="form-control b-negro" onchange="validacion('comuna'); " required>
+                                            <option value=""  id="" >Comuna </option></select>
+                                        <span class="invalid-feedback form-text"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                        <input id="dir" type="text" class="form-control b-negro" placeholder="&#8962;  Dirección" onkeyup="validacion('dir');" required>
+                                    <span class="invalid-feedback form-text"></span>
+                                    </div>
+                                </div>
+
+
+
+                         
+                          
+                          <script>
+                          // Example starter JavaScript for disabling form submissions if there are invalid fields
+                          (function() {
+                            'use strict';
+                            window.addEventListener('load', function() {
+                              // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                              var forms = document.getElementsByClassName('needs-validation');
+                              // Loop over them and prevent submission
+                              var validation = Array.prototype.filter.call(forms, function(form) {
+                                form.addEventListener('submit', function(event) {
+                                  if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                  }
+                                  form.classList.add('was-validated');
+                                }, false);
+                              });
+                            }, false);
+                          })();
+                          </script>
+
+            
+            </div>
+            <div class="form-group modal-footer">
+                        
+                    <div class="row m-1">
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <button type="button" class="btn btn__cerrar b-negro" data-dismiss="modal">Cerrar</button>
+                            </div>
+                            <div class="justify-content-left col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                    <button type="reset" class="btn btn__reg b-negro">Limpiar</button>
+                            </div>
+                            <div class="justify-content-left col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                    <button type="button" class="btn btn__enviar b-negro" onclick='verificar();'> Enviar</button> 
+                             </div>
+                            
+                    </div>
+                </div>
+        </form>
+          </div>
+        </div>
+      </div>
+
+
+
+    <script type="text/javascript" src="jquery/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap-4.1.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <script type="text/javascript" src="js/region.js"></script>
+    <script type="text/javascript" src="js/fecha.js"></script>
+    <script type="text/javascript" src="js/valida-form-modal.js"></script>
+
+
+</body>
+</html>
