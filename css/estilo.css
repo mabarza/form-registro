@@ -1,11 +1,19 @@
-* {
-	box-sizing: border-box;
+
+
+html, body {
+    background: #204862;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
 }
-body {
-	margin: 0;
-	font-family: sans-serif;
-	background: #204862;
+
+
+.container-fluid {
+
+	display: flex;
+	  justify-content: center;	
 }
+
 h2{
 	color:#fff;
 	text-align: center;
